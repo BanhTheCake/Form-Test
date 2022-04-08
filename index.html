@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    html {
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .wrapper {
+      display: flex;
+      width: 700px;
+      max-height: 400px;
+      border: 1px solid black;
+      background-image: url("https://images.unsplash.com/photo-1649258661015-d7b66e484170?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+      background-position: center;
+      background-size: cover;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .login {
+      width: 50%;
+      overflow: hidden;
+    }
+    .register {
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .form-login {
+      width: 100%;
+      height: 100%;
+      background-color: #03254e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      transition: 0.5s;
+    }
+    .form-register-title,
+    .form-login-title {
+      font-size: 40px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+    .form-register-inner,
+    .form-login-inner {
+      width: 200px;
+      max-width: 90%;
+      position: relative;
+      margin-bottom: 40px;
+      height: 30px;
+      /* background-color: #6c5ce7; */
+    }
+    .form-register-inner input,
+    .form-login-inner input {
+      font-family: "Poppins", sans-serif;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 0 5px;
+      outline: none;
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: white;
+      z-index: 10;
+    }
+    .form-register-inner > label,
+    .form-login-inner > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 5px;
+      height: 100%;
+      line-height: 30px;
+      transition: 0.2s;
+    }
+    .form-login-inner input:not(:placeholder-shown) + label,
+    .form-login-inner input:focus + label {
+      transform: translateY(-100%);
+    }
+    .form-register-inner span,
+    .form-login-inner span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5%;
+      background-color: #6c5ce7;
+      transition: 0.2s;
+    }
+    .form-login-inner input:not(:placeholder-shown) ~ span,
+    .form-login-inner input:focus ~ span {
+      height: 100%;
+      border-radius: 2px;
+    }
+    .form-register-btn,
+    .form-login-btn {
+      font-family: "Poppins", sans-serif;
+      width: 200px;
+      max-width: 90%;
+      padding: 5px 10px;
+      background-color: #6c5ce7;
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-register-btn:focus,
+    .form-login-btn:focus {
+      background-color: #545677;
+      transform: translateY(2px);
+    }
+    .form-register {
+      transform: translateX(-100%);
+      transition: 0.5s;
+      text-transform: capitalize;
+      background-color: #e9eb9e;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .form-register-inner input:not(:placeholder-shown) + label,
+    .form-register-inner input:focus + label {
+      transform: translateY(-100%);
+    }
+    .form-register-inner input:not(:placeholder-shown) ~ span,
+    .form-register-inner input:focus ~ span {
+      height: 100%;
+      border-radius: 2px;
+    }
+    .label {
+      font-family: "Poppins", sans-serif;
+      display: inline-block;
+      padding: 10px;
+      background-color: royalblue;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      user-select: none;
+    }
+
+    .label:hover {
+      transform: translateY(-1px);
+      box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+      background-color: #6c5ce7;
+    }
+
+    input[type="checkbox"]:checked ~ .login .form-login {
+      transform: translateX(100%);
+    }
+    input[type="checkbox"]:checked ~ .register .form-register {
+      transform: translateX(0);
+    }
+  </style>
+  <body>
+    <label class="label" for="check">Ấn tui đi</label>
+    <div class="wrapper">
+      <input type="checkbox" id="check" hidden />
+      <div class="login">
+        <form class="form-login" autocomplete="off">
+          <h3 class="form-login-title">Login</h3>
+          <div class="form-login-inner">
+            <input type="text" id="Username" placeholder=" " />
+            <label for="Username">Username</label>
+            <span></span>
+          </div>
+          <div class="form-login-inner">
+            <input type="text" id="Password" placeholder=" " />
+            <label for="Password">Password</label>
+            <span></span>
+          </div>
+          <button class="form-login-btn">Login</button>
+        </form>
+      </div>
+      <div class="register">
+        <form class="form-register" autocomplete="off">
+          <h3 class="form-register-title">register</h3>
+          <div class="form-register-inner">
+            <input type="text" id="RUsername" placeholder=" " />
+            <label for="RUsername">Username</label>
+            <span></span>
+          </div>
+          <div class="form-register-inner">
+            <input type="text" id="RPassword" placeholder=" " />
+            <label for="RPassword">Password</label>
+            <span></span>
+          </div>
+          <button class="form-register-btn">Register</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
